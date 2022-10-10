@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if later == True %}
+<p>This is a post marked as read later</p>
+{% endif %}
+
+
+<img src="{{ post.Image.url }}" alt="">
+<h1>{{post.Title}}</h1>
+<p>{{post.Content}}</p>
+
+<form action="{% url 'sess' %}" method="post">
+{% csrf_token %}
+<input type="hidden" name="read" value={{post.Slug}}>
+<button>Read Later</button>
+</form>
+
+
+{% include 'includes/comment.html' %}
+
+
+
+
+<p><a href="{% url 'posts' %}"> View All Posts  </a></p>
+
+
+
+{% endblock content %}

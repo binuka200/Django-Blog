@@ -1,0 +1,9 @@
+<form action="{% url "indpost" post.Slug %}" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        {{field.label_tag}}
+        {{field}}
+        {{field.errors}}
+    {% endfor %}
+    <button>Submit</button>
+</form>
